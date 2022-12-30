@@ -1,3 +1,5 @@
+// import { ema } from 'framework';
+
 Strategy({
   onStart() {
   },
@@ -12,9 +14,17 @@ Strategy({
     this.option('oversold_rsi', 'buy when RSI reaches this value', Number, 10);
   },
   onPeriod(s) {
-    // s.signal = 'buy';
+    // log ema to global
+    my.ema({ 
+      key: 'trend_ema', 
+      length: 0,
+    });
+    
+    console.log('<<<<<<<<<<', this.period);
+    // console.log('<<<<<<<<<<<<', s.period);
   },
   calculate(s) {
+    // console.log('<<<<<<<<<<<<', s.options);
     // console.log('lifecycle:calculate');
   },
   orderExecuted() {
